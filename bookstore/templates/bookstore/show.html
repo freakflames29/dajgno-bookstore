@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{book.bname}}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{book.bname | title}}</h1>
+    <h2>{{book.author.name | title}}</h2>
+    <p>{{book.desc | title}}</p>
+    <h1>₹ {{book.price}}</h1>
+   
+        <a href="{{book.amazon_link}}" target="_blank">
+            <button>
+                Buy from amazon now
+            </button>
+        
+        </a>
+
+        <a href="{% url 'edit' book.id%}">Edit</a>
+   
+{% endblock content %}

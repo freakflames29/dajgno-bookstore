@@ -1,0 +1,5 @@
+book store
+1. index page whre all book will be listetd
+2. individual book page
+3. each book has name , author ,rating, desc,price,amazon link
+4. crud operation

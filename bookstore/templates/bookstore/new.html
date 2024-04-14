@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block content %}
+    <hr>
+    <a href="{%url 'root'%}">All</a>
+    <h1>{{title}}</h1>
+    {% if id %}
+    <form action="{% url action id%}" method="{{method}}">
+        {% csrf_token %}
+    {% else %}
+    <form action="{% url action %}" method="{{method}}">
+        {% csrf_token %}
+    {% endif %}
+    {{form}}
+
+    <input type="submit" value="Add book">
+</form>
+
+{% endblock content %}

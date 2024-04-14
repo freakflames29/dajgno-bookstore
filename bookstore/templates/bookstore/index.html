@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    All books
+{% endblock title %}
+
+{% block content %}
+
+    <h1>All books listed here...</h1>
+    <hr>
+    <table border='2px'>
+        <tbody>
+            <th>Book name</th>
+            <th>Author</th>
+            <th>Desc</th>
+            <th>Price</th>
+            {% comment %} <th>Amazon Link</th> {% endcomment %}
+            <th>Show</th>
+
+            {% for book in allbooks  %}
+            <tr>
+                <td>{{book.bname}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.desc}}</td>
+                <td>{{book.price}}</td>
+                {% comment %} <td> <a href="{{book.amazon_link}}" target="_blank">Link</a></td> {% endcomment %}
+                <td><a href="{% url 'show' book.id %}">Show</a> | 
+                <a href="{% url 'delete' book.id  %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+
+           
+        </tbody>
+    </table>
+
+    <a href="{%url 'new'%}">Add a book</a>
+
+    {% if request.user %}
+    	<h1> Welcome ! {{ request.user }}</h1>
+        <a href="{% url "logout" %}">Logout</a>
+    {% endif %}
+
+{% endblock content %}
